@@ -2,27 +2,19 @@
 
 package model
 
-type Category struct {
-	ID         string    `json:"id"`
-	Name       string    `json:"name"`
-	Descripion *string   `json:"descripion"`
-	Courses    []*Course `json:"courses"`
+type NewTodo struct {
+	Text   string `json:"text"`
+	UserID string `json:"userId"`
 }
 
-type Course struct {
-	ID          string    `json:"id"`
-	Name        string    `json:"name"`
-	Description *string   `json:"description"`
-	Category    *Category `json:"category"`
+type Todo struct {
+	ID   string `json:"id"`
+	Text string `json:"text"`
+	Done bool   `json:"done"`
+	User *User  `json:"user"`
 }
 
-type NewCategory struct {
-	Name       string  `json:"name"`
-	Descripion *string `json:"descripion"`
-}
-
-type NewCourse struct {
-	Name       string  `json:"name"`
-	Descripion *string `json:"descripion"`
-	CategoryID string  `json:"categoryId"`
+type User struct {
+	ID   string `json:"id"`
+	Name string `json:"name"`
 }
