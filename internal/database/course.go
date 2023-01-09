@@ -7,14 +7,14 @@ import (
 )
 
 type Course struct {
-	db         *sql.DB
-	ID         string
-	Name       string
-	Descripion string
-	CategoryID string
+	db          *sql.DB
+	ID          string
+	Name        string
+	Description string
+	CategoryID  string
 }
 
-func NewCorse(db *sql.DB) *Course {
+func NewCourse(db *sql.DB) *Course {
 	return &Course{db: db}
 }
 
@@ -26,10 +26,10 @@ func (c *Course) Create(name, description, categoryID string) (*Course, error) {
 		return nil, err
 	}
 	return &Course{
-		ID:         id,
-		Name:       name,
-		Descripion: description,
-		CategoryID: categoryID,
+		ID:          id,
+		Name:        name,
+		Description: description,
+		CategoryID:  categoryID,
 	}, nil
 }
 
@@ -45,7 +45,7 @@ func (c *Course) FindAll() ([]Course, error) {
 		if err := rows.Scan(&id, &name, &description, &categoryID); err != nil {
 			return nil, err
 		}
-		courses = append(courses, Course{ID: id, Name: name, Descripion: description, CategoryID: categoryID})
+		courses = append(courses, Course{ID: id, Name: name, Description: description, CategoryID: categoryID})
 	}
 	return courses, nil
 }
